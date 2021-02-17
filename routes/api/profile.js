@@ -252,8 +252,8 @@ router.delete('/experience/:exp_id', passport.authenticate('jwt',{session:false}
         })
 })
 
-// @route Delete api/profile/education/:edu_id
-// @desc delete education from profile
+// @route Delete api/profile/
+// @desc delete user and profile
 // @access private
 router.delete('/', passport.authenticate('jwt',{session:false}),(req,res)=>{
 
@@ -264,8 +264,6 @@ router.delete('/', passport.authenticate('jwt',{session:false}),(req,res)=>{
         })
 })
 
-// @route Delete api/profile/
-// @desc delete user and profile
-// @access private
+
 
 module.exports = router
