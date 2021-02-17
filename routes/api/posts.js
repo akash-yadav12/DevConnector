@@ -6,6 +6,10 @@ const passport = require('passport')
 // Post Model
 const Post = require('../../models/Posts')
 
+// Profile Model
+const Profile = require('../../models/Profile')
+
+
 // Validation
 const validatePostInput = require('../../validation/post')
 
@@ -19,7 +23,7 @@ router.get('/test',(req,res)=>{
 
 // @route Get api/posts
 // @desc Get posts
-// @access private
+// @access public
 router.get('/',(req,res) =>{
     Post.find()
         .sort({date: -1})
@@ -29,7 +33,7 @@ router.get('/',(req,res) =>{
 
 // @route Get api/posts/:id
 // @desc Get posts by id
-// @access private
+// @access public
 router.get('/:id',(req,res) =>{
     Post.findById(req.params.id)
         .then(post => {res.json(post)})
@@ -57,6 +61,28 @@ router.post('/',passport.authenticate('jwt', {session:false}), (req,res) => {
 
     newPost.save()
         .then(post => res.json(post))
+})
+
+// @route Delete api/posts/:id
+// @desc Delete posts by id
+// @access private
+router.delete('/:id',passport.authenticate('jwt', {session:false}), (req,res)=>{
+
+    Profile.findOne({ user: req.user.id})
+        .then( profile =>{
+            Post.findById(req.params.id)
+                .then(post => {
+                    // Check for Post owner
+                    if(post.user.toString() !== req.user.id){
+                        return res.status(401).json({ notauthorized: 'User not authorized'})
+                    }
+
+                    // Delete
+                    post.remove()
+                        .then(() => res.json({ success: true}))
+                        .catch(err => res.status(404).json({ postnotfound: 'No post found'}))
+                })
+        })
 })
 
 module.exports = router
