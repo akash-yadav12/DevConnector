@@ -12,6 +12,8 @@ import store from './store'
 
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
+import Dashboard from './components/dashboard/Dashboard'
+import { clearCurrentProfile } from './actions/profileActions';
 
 
 // check for token
@@ -29,6 +31,8 @@ if(localStorage.jwtToken){
     //  Logout user
     store.dispatch(logoutUser);
     // Todo: Clear current profile
+    store.dispatch(clearCurrentProfile);
+
     // Redirect to login
     window.location.href = '/login'
   }
@@ -44,6 +48,7 @@ function App() {
             <div class="container">
               <Route exact path="/register" component={Register}/>
               <Route exact path="/login" component={Login}/>
+              <Route exact path="/dashboard" component={Dashboard}/>
             </div>
             <Footer/>
         </div>
