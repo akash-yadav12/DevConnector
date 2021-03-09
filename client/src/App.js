@@ -10,6 +10,8 @@ import { logoutUser, setCurrentUser } from './actions/authActions'
 import { Provider } from 'react-redux';
 import store from './store'
 
+import PrivateRoute from './components/common/PrivateRoute'
+
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
 import Dashboard from './components/dashboard/Dashboard'
@@ -48,7 +50,9 @@ function App() {
             <div class="container">
               <Route exact path="/register" component={Register}/>
               <Route exact path="/login" component={Login}/>
-              <Route exact path="/dashboard" component={Dashboard}/>
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+              </Switch>
             </div>
             <Footer/>
         </div>
