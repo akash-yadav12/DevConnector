@@ -15,6 +15,8 @@ import PrivateRoute from './components/common/PrivateRoute'
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
 import Dashboard from './components/dashboard/Dashboard'
+import CreateProfile from './components/create-profile/CreateProfile'
+
 import { clearCurrentProfile } from './actions/profileActions';
 
 
@@ -52,6 +54,9 @@ function App() {
               <Route exact path="/login" component={Login}/>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
               </Switch>
             </div>
             <Footer/>
