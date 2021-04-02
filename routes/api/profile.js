@@ -80,7 +80,7 @@ router.get('/handle/:handle', (req,res)=>{
         .catch(err => res.status(404).json(err))
 })
 
-// @route GET api/profile/handle/:user_id
+// @route GET api/profile/user/:user_id
 // @desc Get profile by user ID
 // @access public
 router.get('/user/:user_id', (req,res)=>{
