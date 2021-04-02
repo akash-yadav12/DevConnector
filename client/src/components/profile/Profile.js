@@ -40,7 +40,7 @@ class Profile extends Component {
           </div>
           <ProfileHeader profile={profile.profile}/>
           <ProfileAbout profile = {profile.profile}/>
-          <ProfileCreds/>
+          <ProfileCreds education = {profile.profile.education} experience = {profile.profile.experience}/>
           <ProfileGithub/>  
         </div>
       )
