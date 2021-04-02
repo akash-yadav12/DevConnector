@@ -23,6 +23,7 @@ import { clearCurrentProfile } from './actions/profileActions';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
 import AddEducation from './components/add-credentials/AddEducation';
+import NotFound from './components/not-found/NotFound';
 
 
 
@@ -75,6 +76,8 @@ function App() {
               <Switch>
                 <PrivateRoute exact path="/add-education" component={AddEducation}/>
               </Switch>
+
+              <Route exact path="/not-found" component={NotFound}/>
             </div>
             <Footer/>
         </div>

@@ -7,7 +7,7 @@ export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading)
   axios.get('/api/profile')
     .then(res => {
-      console.log(res.data)
+      console.log(res.data.githubusername)
       dispatch({
         type: GET_PROFILE,
         payload: res.data
@@ -43,7 +43,7 @@ export const getProfileByHandle = (handle) => dispatch => {
 // Create Profile
 export const createProfile = (profileData, history) => dispatch => {
   axios.post('/api/profile', profileData)
-  .then(res => history.push('/dashboard'))
+  .then(res => { history.push('/dashboard')})
     .catch(err => 
       dispatch({
         type:GET_ERRORS,
