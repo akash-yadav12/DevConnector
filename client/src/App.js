@@ -25,6 +25,7 @@ import AddExperience from './components/add-credentials/AddExperience';
 import AddEducation from './components/add-credentials/AddEducation';
 import NotFound from './components/not-found/NotFound';
 import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 
 
 
@@ -81,6 +82,9 @@ function App() {
                 <PrivateRoute exact path="/feed" component={Posts}/>
               </Switch>
               <Route exact path="/not-found" component={NotFound}/>
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post}/>
+              </Switch>
             </div>
             <Footer/>
         </div>
