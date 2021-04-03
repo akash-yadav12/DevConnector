@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Spinner from '../../components/common/Spinner'
@@ -24,6 +25,7 @@ class Post extends Component {
       postContent = (
         <div>
           <PostItem post = {post} showActions = {false} />
+          <CommentForm postId = {post._id} />
         </div>
       )
     }
