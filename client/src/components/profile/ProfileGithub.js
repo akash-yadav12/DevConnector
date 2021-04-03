@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import isEmpty from '../../validation/is-empty'
 
 
 class ProfileGithub extends Component {
@@ -46,16 +47,16 @@ class ProfileGithub extends Component {
                 {repo.name}
               </Link>
             </h4>
-            <p>{repo.description}</p>
+            <p>{ isEmpty(repo.description) ? (<p>No Description</p>) : repo.description}</p>
           </div>
           <div className="col-md-6">
-            <span className="badge badge-info">
+            <span className="badge bg-info me-3">
               Stars: {repo.stargazers_count}
             </span>
-            <span className="badge badge-secondary">
+            <span className="badge bg-secondary me-3">
               Watchers: {repo.watchers_count}
             </span>
-            <span className="badge badge-success">
+            <span className="badge bg-success me-3">
               Forks: {repo.forks_count}
             </span>
             
